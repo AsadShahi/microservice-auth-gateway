@@ -11,9 +11,12 @@ interface AuthService {
 export class AuthController implements OnModuleInit {
   private authService: AuthService;
 
+  // inject depedency 
   constructor(@Inject('AUTH_PACKAGE') private client: ClientGrpc) {}
 
+// life cycle
   onModuleInit() {
+    // get authservice from client grpc
     this.authService = this.client.getService<AuthService>('AuthService');
   }
 
